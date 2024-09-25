@@ -1,0 +1,117 @@
+4. mpls enable
+========================= 
+[only PE -to-P - to - PE ; no mpls between CE-to-PE]
+============================
+
+------------------
+R1
+------------
+en
+conf t
+
+!
+int f0/0
+mpls ip
+!
+int f1/0
+mpls ip
+!
+int f2/0
+mpls ip
+!
+!
+end
+!
+wr
+!
+
+------------------
+R2
+------------
+en
+conf t
+!
+int f0/0
+mpls ip
+!
+int f1/0
+mpls ip
+!
+!
+end
+!
+wr
+!
+
+------------------
+R3
+------------
+en
+conf t
+!
+int f0/0
+mpls ip
+!
+int f1/0
+mpls ip
+!
+int f2/0
+mpls ip
+!
+!
+end
+!
+wr
+!
+
+------------------
+R4
+------------
+en
+conf t
+!
+int f0/0
+mpls ip
+!
+int f1/0
+mpls ip
+!
+!
+end
+!
+wr
+!
+
+------------------
+PE-1
+------------
+en
+conf t
+!
+int f2/0
+mpls ip
+!
+!
+end
+!
+wr
+!
+
+------------------
+PE-2
+------------
+en
+conf t
+!
+int f2/0
+mpls ip
+!
+!
+end
+!
+wr
+!
+
+-----------------
+show mpls ldp neighbor
+show mpls forwarding-table
